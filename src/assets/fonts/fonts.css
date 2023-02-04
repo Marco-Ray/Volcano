@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'Baijam';
+    src: url('./Baijam.ttc');
+}
+
+@font-face {
+    font-family: 'AdobeSongStd-Light';
+    src: url('./AdobeSongStd-Light.otf');
+}
+
+@font-face {
+    font-family: 'GillSans';
+    src: url('./GillSans.ttc');
+}
