@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export function getJson(params) {
   return axios({
-    url: '/api/test',
+    url: '/api/',
     method: 'get',
     params,
     urlType: 'api',
