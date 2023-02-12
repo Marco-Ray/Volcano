@@ -1,14 +1,19 @@
 @font-face {
-    font-family: 'Baijam';
-    src: url('./Baijam.ttc');
+    font-family: 'Roboto-Black';
+    src: url('./Roboto-Black.ttf');
 }
 
 @font-face {
-    font-family: 'AdobeSongStd-Light';
-    src: url('./AdobeSongStd-Light.otf');
+    font-family: 'union_bold';
+    src: url('./union_bold.otf');
 }
 
 @font-face {
-    font-family: 'GillSans';
-    src: url('./GillSans.ttc');
+    font-family: 'union_bold_italic';
+    src: url('./union_bold_italic.otf');
+}
+
+@font-face {
+    font-family: 'union_regular';
+    src: url('./union_regular.otf');
 }

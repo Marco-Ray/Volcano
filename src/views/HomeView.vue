@@ -1,8 +1,6 @@
 <template>
   <div class="home">
-    <h1>This is the website of Volcano, Boooom!</h1>
-    <p>Here is the message from api</p>
-    <p>{{ message }}</p>
+<!--    <p>{{ message }}</p>-->
   </div>
 </template>
 
@@ -32,3 +30,11 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.home {
+  width: 100vw;
+  height: 100vh;
+  background: no-repeat center url("@/assets/Welcome/background.jpeg");
+}
+</style>
