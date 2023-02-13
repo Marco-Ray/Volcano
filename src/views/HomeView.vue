@@ -1,12 +1,32 @@
+<!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
   <div class="home">
-<!--    <p>{{ message }}</p>-->
+    <div class="container">
+      <div>
+        <div id="title">
+          <div>
+            Explore
+          </div>
+          <div>
+            The Volcanoes
+          </div>
+        </div>
+        <div class="description">
+          <p>
+            The website presents dynamic data on four of
+            the world's existing volcanoes and their specific volcanoes,
+            with science as the main feature.
+          </p>
+        </div>
+      </div>
+      <div id="btt-start" @click="start">START</div>
+    </div>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { getJson } from '@/api/data';
+// import { getJson } from '@/api/data';
 
 export default {
   name: 'HomeView',
@@ -14,27 +34,89 @@ export default {
   },
   data() {
     return {
-      message: '',
+      // message: '',
     };
   },
   methods: {
-    apiTest() {
-      getJson().then((res) => {
-        // console.log(res.data);
-        this.message = res.data.message;
-      });
+    // apiTest() {
+    //   getJson().then((res) => {
+    //     // console.log(res.data);
+    //     this.message = res.data.message;
+    //   });
+    // },
+    start() {
+      this.$router.push('/Categories');
     },
   },
   created() {
-    this.apiTest();
+    // this.apiTest();
   },
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
+@function wCal($w) {
+  @return calc(100vw / 1920 * $w);
+}
+
+@function hCal($h) {
+  @return calc(100vh / 1080 * $h);
+}
+
 .home {
   width: 100vw;
   height: 100vh;
-  background: no-repeat center url("@/assets/Welcome/background.jpeg");
+  background: no-repeat center url("@/assets/Welcome/background.jpg");
+  background-size: cover;
+  .container {
+    position: absolute;
+    top: 116px;
+    height: calc(100vh - 116px);
+    margin-left: wCal(122);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    row-gap: 100px;
+  }
+
+}
+
+#title {
+  width: 858px;
+
+  font-family: Roboto-Black;
+  text-align: start;
+  color: white;
+  font-size: 98px;
+}
+
+.description {
+  width: wCal(600);
+
+  font-family: union_regular;
+  font-size: 26px;
+  color: white;
+  text-align: start;
+  overflow-wrap: break-word;
+  p {
+    line-height: 41px;
+  }
+}
+
+#btt-start {
+  margin-bottom: 20px;
+  width: 199px;
+  height: 69px;
+  border-radius: 12px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: white;
+  cursor: pointer;
+
+  line-height: 69px;
+  font-family: union_regular;
+  font-size: 30px;
+  color: white;
 }
 </style>
