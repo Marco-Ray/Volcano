@@ -1,19 +1,37 @@
 <template>
-  <div class="categories">
-    <div class="container">
-      <el-tabs type="card" tabPosition="left">
-        <el-tab-pane label="Ash And Cinder Cone">Ash And Cinder Cone</el-tab-pane>
-        <el-tab-pane label="Basic Lava Cone">Basic Lava Cone</el-tab-pane>
-        <el-tab-pane label="Acid Lava Cone">Acid Lava Cone</el-tab-pane>
-        <el-tab-pane label="Composite Cone">Composite Cone</el-tab-pane>
-      </el-tabs>
+  <div>
+    <nav-bar />
+    <div class="categories">
+      <div class="container">
+        <el-tabs type="card" tabPosition="left">
+          <el-tab-pane
+            v-for="(label, index) in labelOptions" :key="index"
+            :label="label"
+          >
+            <category-board :label="label" />
+          </el-tab-pane>
+        </el-tabs>
+      </div>
+
+      <div id="categories-bg"></div>
     </div>
   </div>
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue';
+import CategoryBoard from '@/components/CategoryBoard.vue';
+
 export default {
   name: 'CategoriesView',
+  components: {
+    NavBar, CategoryBoard,
+  },
+  data() {
+    return {
+      labelOptions: ['Ash And Cinder Cone', 'Basic Lava Cone', 'Acid Lava Cone', 'Composite Cone'],
+    };
+  },
 };
 </script>
 
@@ -25,15 +43,19 @@ export default {
 @function hCal($h) {
   @return calc(100vh / 1080 * $h);
 }
-
-.categories {
+#categories-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background-color: #484849;
+  z-index: -10;
+}
+
+.categories {
   .container {
-    position: absolute;
-    top: 116px;
-    margin: 79px wCal(122);
+    margin: 72px wCal(122);
     width: calc(100vw - wCal(244));
     height: calc(100vh - 269px);
     display: flex;
@@ -63,7 +85,7 @@ export default {
       color: white;
       border: unset !important;
       &:hover {
-        color: blue;
+        color: red;
       }
     }
     .is-active {

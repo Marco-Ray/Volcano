@@ -1,25 +1,30 @@
 <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
-  <div class="home">
-    <div class="container">
-      <div>
-        <div id="title">
-          <div>
-            Explore
+  <div>
+    <nav-bar />
+    <div class="home">
+      <div class="container">
+        <div>
+          <div id="title">
+            <div>
+              Explore
+            </div>
+            <div>
+              The Volcanoes
+            </div>
           </div>
-          <div>
-            The Volcanoes
+          <div class="description">
+            <p>
+              The website presents dynamic data on four of
+              the world's existing volcanoes and their specific volcanoes,
+              with science as the main feature.
+            </p>
           </div>
         </div>
-        <div class="description">
-          <p>
-            The website presents dynamic data on four of
-            the world's existing volcanoes and their specific volcanoes,
-            with science as the main feature.
-          </p>
-        </div>
+        <div id="btt-start" @click="start">START</div>
       </div>
-      <div id="btt-start" @click="start">START</div>
+
+      <div id="home-bg"></div>
     </div>
   </div>
 </template>
@@ -27,10 +32,12 @@
 <script>
 // @ is an alias to /src
 // import { getJson } from '@/api/data';
+import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: 'HomeView',
   components: {
+    NavBar,
   },
   data() {
     return {
@@ -62,16 +69,20 @@ export default {
 @function hCal($h) {
   @return calc(100vh / 1080 * $h);
 }
-
-.home {
+#home-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100vh;
   background: no-repeat center url("@/assets/Welcome/background.jpg");
   background-size: cover;
+  z-index: -10;
+}
+
+.home {
   .container {
-    position: absolute;
-    top: 116px;
-    height: calc(100vh - 116px);
+    margin-top: 116px;
     margin-left: wCal(122);
     display: flex;
     flex-direction: column;

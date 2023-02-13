@@ -64,14 +64,13 @@ export default {
 }
 
 nav {
-  position: absolute;
+  //position: absolute;
   padding: 0 wCal(122);
   height: 116px;
   width: calc(100vw - wCal(244));
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 99;
   #Logo {
     width: 59px;
     height: 60px;
@@ -109,6 +108,7 @@ nav {
     display: flex;
     flex-direction: row;
     align-items: end;
+    margin-left: 20px;
     .icon-container {
       display: flex;
       align-items: end;
@@ -134,10 +134,10 @@ nav {
   }
 }
 
-@media (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   nav {
     background-color: black;
-    height: unset;
+    height: 200px;
     min-height: 100px;
     #menu {
       #trigger {
