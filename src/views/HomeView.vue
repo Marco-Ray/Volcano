@@ -92,7 +92,7 @@ export default {
 }
 
 .description {
-  width: wCal(600);
+  width: 600px;
 
   font-family: union_regular;
   font-size: 26px;
@@ -118,5 +118,10 @@ export default {
   font-family: union_regular;
   font-size: 30px;
   color: white;
+
+  &:hover {
+    color: red;
+    border-color: red;
+  }
 }
 </style>

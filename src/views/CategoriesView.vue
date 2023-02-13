@@ -50,13 +50,13 @@ export default {
   height: 100%;
   ::v-deep .el-tabs__nav-wrap {
     padding: 0 !important;
-    .el-tabs--left.el-tabs--card .el-tabs__nav {
-      border: unset;
+    .el-tabs__nav {
+      border: unset !important;
     }
     .el-tabs__item {
       margin: 5px 0 ;
-      width: 165px;
-      height: 165px;
+      width: 160px;
+      height: 160px;
       background-color: rgb(151, 151, 151);
       text-align: center;
       line-height: 166px;

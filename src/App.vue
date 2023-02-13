@@ -22,7 +22,7 @@ html, body {
 
 body {
   // TODO
-  //min-width: ;
+  min-width: 850px;
 }
 
 #app {
