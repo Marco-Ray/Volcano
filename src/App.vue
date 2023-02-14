@@ -1,6 +1,8 @@
 <template>
+  <nav-bar />
   <router-view
     v-slot="{ Component, route }"
+    class="viewer"
   >
     <transition
       :name="route.meta.transitionName"
@@ -14,9 +16,12 @@
 </template>
 
 <script>
+import NavBar from '@/components/NavBar.vue';
+
 export default {
   name: 'App',
   components: {
+    NavBar,
   },
 };
 </script>
@@ -25,20 +30,26 @@ export default {
 html, body {
   margin: 0;
   padding: 0;
-  overflow-y: hidden;
   overflow-x: hidden;
 }
 
 body {
   // TODO
   min-width: 850px;
+  background: no-repeat center url("@/assets/Welcome/background.jpg");
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+}
+
+.viewer {
+  padding-top: 116px;
 }
 
 // slide-right

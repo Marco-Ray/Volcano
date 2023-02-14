@@ -1,7 +1,6 @@
 <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
   <div>
-    <nav-bar />
     <div class="home">
       <div class="container">
         <div>
@@ -23,8 +22,6 @@
         </div>
         <div id="btt-start" @click="start">START</div>
       </div>
-
-      <div id="home-bg"></div>
     </div>
   </div>
 </template>
@@ -32,12 +29,10 @@
 <script>
 // @ is an alias to /src
 // import { getJson } from '@/api/data';
-import NavBar from '@/components/NavBar.vue';
 
 export default {
   name: 'HomeView',
   components: {
-    NavBar,
   },
   data() {
     return {
@@ -68,16 +63,6 @@ export default {
 
 @function hCal($h) {
   @return calc(100vh / 1080 * $h);
-}
-#home-bg {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: no-repeat center url("@/assets/Welcome/background.jpg");
-  background-size: cover;
-  z-index: -10;
 }
 
 .home {

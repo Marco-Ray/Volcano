@@ -13,7 +13,7 @@
       <div id="router-box" v-show="isShow">
         <router-link to="/">Home</router-link>
         <router-link to="/Categories">Categories</router-link>
-        <router-link to="/Volcanoes">Volcanoes</router-link>
+        <router-link to="/Volcano">Volcano</router-link>
         <router-link to="/more">Learn More</router-link>
       </div>
     </div>
@@ -64,13 +64,16 @@ export default {
 }
 
 nav {
-  //position: absolute;
+  position: absolute;
+  top: 0;
+  left: 0;
   padding: 0 wCal(122);
   height: 116px;
   width: calc(100vw - wCal(244));
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 99;
   #Logo {
     width: 59px;
     height: 60px;

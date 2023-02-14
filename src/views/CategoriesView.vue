@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav-bar />
+    <!-- nav-bar /-->
     <div class="categories">
       <div class="container">
         <el-tabs type="card" tabPosition="left">
@@ -19,13 +19,14 @@
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue';
+// import NavBar from '@/components/NavBar.vue';
 import CategoryBoard from '@/components/CategoryBoard.vue';
 
 export default {
   name: 'CategoriesView',
   components: {
-    NavBar, CategoryBoard,
+    // NavBar,
+    CategoryBoard,
   },
   data() {
     return {
@@ -43,13 +44,14 @@ export default {
 @function hCal($h) {
   @return calc(100vh / 1080 * $h);
 }
+
 #categories-bg {
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #484849;
+  background-color: rgba(72, 72, 73, 0.9);
   z-index: -10;
 }
 
@@ -63,7 +65,6 @@ export default {
     justify-content: center;
     align-items: start;
     row-gap: 100px;
-    //background-color: white;
     background: linear-gradient(to bottom, rgba(255, 255, 255, 0.44), rgba(219, 219, 219, 0.08));
   }
 }

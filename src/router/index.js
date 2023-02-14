@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import CategoriesView from '../views/CategoriesView.vue';
+import VolcanoView from '../views/VolcanoView.vue';
 
 const routes = [
   {
@@ -21,6 +22,15 @@ const routes = [
     component: CategoriesView,
     meta: {
       index: 1,
+      transitionName: '',
+    },
+  },
+  {
+    path: '/Volcano',
+    name: 'Volcano',
+    component: VolcanoView,
+    meta: {
+      index: 2,
       transitionName: '',
     },
   },
