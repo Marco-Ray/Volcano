@@ -8,7 +8,7 @@
             v-for="(label, index) in labelOptions" :key="index"
             :label="label"
           >
-            <category-board :label="label" />
+            <category-board :type="label" />
           </el-tab-pane>
         </el-tabs>
       </div>
@@ -30,8 +30,11 @@ export default {
   },
   data() {
     return {
-      labelOptions: ['Ash And Cinder Cone', 'Basic Lava Cone', 'Acid Lava Cone', 'Composite Cone'],
+      labelOptions: ['Stratovolcano', 'Shield', 'Caldera', 'Pyroclastic cone'],
+      type: 'Stratovolcano',
     };
+  },
+  methods: {
   },
 };
 </script>
@@ -76,6 +79,10 @@ export default {
     .el-tabs__nav {
       border: unset !important;
     }
+    .el-tabs__content {
+      width: calc(100vw - wCal(414));
+      height: 100%;
+    }
     .el-tabs__item {
       margin: 5px 0 ;
       width: 160px;
@@ -94,9 +101,4 @@ export default {
     }
   }
 }
-
-//::v-deep .el-tabs--left {
-//  width: 168px;
-//  height: 168px;
-//}
 </style>

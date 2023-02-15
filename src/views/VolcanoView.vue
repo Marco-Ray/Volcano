@@ -18,6 +18,8 @@
         <div class="session-r">right</div>
       </div>
 
+      <side-board class="side_board" :volcano_json="volcano_json" :type="type"/>
+
       <div id="volcano-bg"></div>
     </div>
   </div>
@@ -26,15 +28,20 @@
 <script>
 import ArrowLeft from '@/assets/Volcano/arrow-left.png';
 import { getVolcano } from '@/api/data';
+import SideBoard from '@/components/SideBoard.vue';
 
 export default {
   name: 'VolcanoView',
+  components: {
+    SideBoard,
+  },
   data() {
     return {
       arrowLeft: ArrowLeft,
       volcano_name: 'ASH AND CINDER CONE NAME OF VOLCANO',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       volcano_json: [],
+      type: this.$route.query.type,
     };
   },
   methods: {
@@ -52,7 +59,7 @@ export default {
     },
   },
   created() {
-    // this.getVolcano('Stratovolcano');
+    this.getVolcano(this.type);
   },
 };
 </script>
@@ -138,5 +145,11 @@ export default {
 
 .session-r {
   background: rgb(216, 216, 216);
+}
+
+.side_board {
+  position: absolute;
+  top: 286px;
+  left: 0;
 }
 </style>

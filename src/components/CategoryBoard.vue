@@ -1,21 +1,23 @@
 <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
  <div class="category">
-   <div class="card">
-    <div class="title">Ash And Cinder Cone Causes And Features</div>
-    <div class="features">{{ features }}</div>
-    </div>
-   <div class="card">
-    <div class="title">Emission Frequency</div>
-    </div>
-   <div class="card">
-    <div class="title">Number Of Volcanoes</div>
-    </div>
+   <!--el-scrollbar height="811px" -->
+     <div class="card">
+      <div class="title">Ash And Cinder Cone Causes And Features</div>
+      <div class="features">{{ features }}</div>
+      </div>
+     <div class="card">
+      <div class="title">Emission Frequency</div>
+      </div>
+     <div class="card">
+      <div class="title">Number Of Volcanoes</div>
+      </div>
 
-   <div class="viewMore" @click="goFor">
-    <div>View More</div>
-    <div><img :src="arrowRight" alt="view more"/></div>
-   </div>
+     <div class="viewMore" @click="goFor">
+      <div>View More</div>
+      <div><img :src="arrowRight" alt="view more"/></div>
+     </div>
+   <!--/el-scrollbar -->
  </div>
 </template>
 
@@ -25,7 +27,7 @@ import ArrowRight from '@/assets/Categories/arrow-right.png';
 export default {
   name: 'CategoryBoard',
   props: {
-    label: String,
+    type: String,
   },
   data() {
     return {
@@ -35,7 +37,7 @@ export default {
   },
   methods: {
     goFor() {
-      this.$router.push('/Volcano');
+      this.$router.push({ path: '/Volcano', query: { type: this.type } });
     },
   },
 };
@@ -51,18 +53,21 @@ export default {
 }
 
 .category {
-  display: flex;
-  width: wCal(1515);
-  height: 668px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  height: calc(100vh - 269px);
   .card {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 0 40px;
     width: 100%;
     height: 100%;
-    border-right: 1px solid rgb(151, 151, 151);
     color: white;
+    border-right: 1px solid rgb(151, 151, 151);
+    &:nth-child(-1) {
+      border-right: unset;
+    }
     &:hover {
       border-top: 5px solid white;
     }
@@ -78,6 +83,7 @@ export default {
   }
 
   .features {
+    padding: 0 40px;
     font-family: union_regular;
     font-size: 16px;
     line-height: 31px;
@@ -87,8 +93,8 @@ export default {
 
 .viewMore {
   position: absolute;
-  bottom: 20px;
-  right: 46px;
+  bottom: hCal(20);
+  right: wCal(46);
   display: flex;
   flex-direction: row;
   column-gap: 10px;
@@ -97,5 +103,21 @@ export default {
   color: white;
   font-family: union_regular;
   font-size: 32px;
+}
+
+@media screen and (max-width: 1800px) {
+  .category {
+    grid-template-columns: repeat(1, 1fr);
+    .card {
+      border-bottom: 1px solid rgb(151, 151, 151);
+      &:nth-child(-1) {
+        border-right: unset;
+      }
+      &:hover {
+        border-top: unset;
+        border-left: 5px solid white;
+      }
+    }
+  }
 }
 </style>
