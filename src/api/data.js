@@ -1,10 +1,9 @@
 import axios from 'axios';
 
-export function getJson(params) {
+export function getVolcano(path) {
   return axios({
-    url: '/api/',
+    url: `/api/volcano/${path}`,
     method: 'get',
-    params,
     urlType: 'api',
   });
 }

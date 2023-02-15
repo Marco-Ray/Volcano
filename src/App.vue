@@ -1,18 +1,20 @@
 <template>
-  <nav-bar />
-  <router-view
-    v-slot="{ Component, route }"
-    class="viewer"
-  >
-    <transition
-      :name="route.meta.transitionName"
+  <el-scrollbar height="100vh">
+    <nav-bar />
+    <router-view
+      v-slot="{ Component, route }"
+      class="viewer"
     >
-      <component
-        :is="Component"
-        :key="route.path"
-      />
-    </transition>
-  </router-view>
+      <transition
+        :name="route.meta.transitionName"
+      >
+        <component
+          :is="Component"
+          :key="route.path"
+        />
+      </transition>
+    </router-view>
+  </el-scrollbar>
 </template>
 
 <script>
@@ -31,6 +33,7 @@ html, body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 body {
