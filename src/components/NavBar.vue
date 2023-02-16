@@ -13,7 +13,9 @@
       <div id="router-box" v-show="isShow">
         <router-link to="/">Home</router-link>
         <router-link to="/Categories">Categories</router-link>
-        <router-link to="/Volcano">Volcano</router-link>
+        <router-link :to="{ path: '/Volcano', query: { type: 'Stratovolcano' }}">
+          Volcano
+        </router-link>
         <router-link to="/more">Learn More</router-link>
       </div>
     </div>

@@ -1,10 +1,12 @@
+<!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
   <div class="sideBoard">
     <div class="type">{{ type }}</div>
 
     <el-scrollbar class="scroll-viewer">
       <div class="cards_grid">
-        <div v-for="(v, index) in volcano_json" :key="index" class="brief_card">
+        <div v-for="(v, index) in volcano_json" :key="index" class="brief_card"
+             @click="setVolcano(index)">
           <div class="v_pic">
             {{ index }}
           </div>
@@ -29,6 +31,11 @@ export default {
   data() {
     return {
     };
+  },
+  methods: {
+    setVolcano(index) {
+      this.$emit('setVolcano', index);
+    },
   },
 };
 </script>

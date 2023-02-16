@@ -8,17 +8,22 @@
           <div>Back</div>
         </div>
         <div class="session-l">
-          <div class="vName">{{ volcano_name }}</div>
+          <div class="vName">{{ current_volcano.volcano_name }}</div>
           <div class="vDescription">{{ description }}</div>
           <div class="location">
             <div class="map">there should be a map</div>
-            <div class="geoInfo">the latitude and longitude</div>
+            <div class="geoInfo">
+              lat: {{ current_volcano.latitude }}
+              <br/>
+              lng: {{ current_volcano.longitude }}
+            </div>
           </div>
         </div>
         <div class="session-r">right</div>
       </div>
 
-      <side-board class="side_board" :volcano_json="volcano_json" :type="type"/>
+      <side-board class="side_board" :volcano_json="volcano_json" :type="type"
+                  @setVolcano="setVolcano" />
 
       <div id="volcano-bg"></div>
     </div>
@@ -38,8 +43,7 @@ export default {
   data() {
     return {
       arrowLeft: ArrowLeft,
-      volcano_name: 'ASH AND CINDER CONE NAME OF VOLCANO',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      current_volcano: {},
       volcano_json: [],
       type: this.$route.query.type ? this.$route.query.type : 'Stratovolcano',
     };
@@ -53,6 +57,8 @@ export default {
         .then((res) => {
           if (res.data) {
             this.volcano_json = res.data;
+            // eslint-disable-next-line
+            this.current_volcano = res.data[0];
           } else {
             this.volcano_json = [];
           }
@@ -60,6 +66,10 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    setVolcano(index) {
+      this.current_volcano = this.volcano_json[index];
+      // TODO give feedback when successfully select new volcano
     },
   },
   created() {
@@ -123,6 +133,7 @@ export default {
   color: white;
   text-align: start;
   .vName {
+    height: 60px;
     font-family: Roboto-Black;
     font-size: 48px;
   }
