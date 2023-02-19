@@ -28,10 +28,15 @@
         <div class="session-r">
           <div class="vPhoto"></div>
           <div class="like">
-            <div class="like-box">
+            <div v-if="!liked"
+              class="like-box" @click="debounceMethods(likeVolcano, current_volcano.id, 2000)">
               <img :src="iconLike" alt="like" class="like-icon" />
             </div>
-            <div class="like-num">100</div>
+            <div v-else
+              class="like-box"  @click="debounceMethods(dislikeVolcano, current_volcano.id, 2000)">
+              <img :src="iconLiked" alt="liked" class="like-icon" />
+            </div>
+            <div class="like-num">{{ current_volcano.likes }}</div>
           </div>
         </div>
       </div>
@@ -48,7 +53,8 @@
 import ArrowLeft from '@/assets/Volcano/arrow-left.png';
 import IconTag from '@/assets/Volcano/icon-tag.png';
 import IconLike from '@/assets/Volcano/icon-like.png';
-import { getVolcano } from '@/api/data';
+import IconLiked from '@/assets/Volcano/icon-liked.png';
+import { getVolcano, likeVolcano, dislikeVolcano } from '@/api/data';
 import SideBoard from '@/components/SideBoard.vue';
 
 export default {
@@ -61,9 +67,11 @@ export default {
       arrowLeft: ArrowLeft,
       iconTag: IconTag,
       iconLike: IconLike,
+      iconLiked: IconLiked,
       current_volcano: {},
       volcano_json: [],
       type: this.$route.query.type ? this.$route.query.type : 'Stratovolcano',
+      liked: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     };
   },
@@ -89,6 +97,29 @@ export default {
     setVolcano(index) {
       this.current_volcano = this.volcano_json[index];
       // TODO give feedback when successfully select new volcano
+    },
+    async likeVolcano(index) {
+      await likeVolcano(index)
+        .then((res) => {
+          console.log(res.data);
+          // eslint-disable-next-line
+          this.current_volcano['likes'] = res.data.likes;
+          this.liked = true;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    async dislikeVolcano(index) {
+      await dislikeVolcano(index)
+        .then((res) => {
+          // eslint-disable-next-line
+          this.current_volcano['likes'] = res.data.likes;
+          this.liked = false;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   created() {

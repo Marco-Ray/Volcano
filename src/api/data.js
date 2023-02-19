@@ -8,11 +8,18 @@ export function getVolcano(path) {
   });
 }
 
-export function postJson(params) {
+export function likeVolcano(path) {
   return axios({
-    url: '/api/post',
-    method: 'post',
-    params,
+    url: `/api/volcano/like/${path}`,
+    method: 'put',
+    urlType: 'api',
+  });
+}
+
+export function dislikeVolcano(path) {
+  return axios({
+    url: `/api/volcano/dislike/${path}`,
+    method: 'put',
     urlType: 'api',
   });
 }

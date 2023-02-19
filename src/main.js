@@ -9,5 +9,9 @@ import '@/assets/fonts/fonts.css';
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 
-createApp(App).use(store).use(router).use(ElementPlus)
+import debounce from '@/mixins/debounce';
+
+const app = createApp(App);
+app.mixin(debounce);
+app.use(store).use(router).use(ElementPlus)
   .mount('#app');
