@@ -16,16 +16,16 @@
         <router-link :to="{ path: '/Volcano', query: { type: 'Stratovolcano' }}">
           Volcano
         </router-link>
-        <router-link to="/more">Learn More</router-link>
+        <router-link to="/LearnMore">Learn More</router-link>
       </div>
     </div>
 <!--    search-->
-    <div id="search">
+    <!-- div id="search">
       <div class="icon-container">
         <img :src="iconSearch" alt="search icon" class="icon"/>
       </div>
       <el-input v-model="searchInput" placeholder="Enter category or volcano..."/>
-    </div>
+    </div-->
   </nav>
 </template>
 
@@ -70,7 +70,7 @@ nav {
   top: 0;
   left: 0;
   padding: 0 wCal(122);
-  height: 116px;
+  height: 180px;
   width: calc(100vw - wCal(244));
   display: flex;
   justify-content: space-between;
@@ -96,16 +96,21 @@ nav {
   }
   #router-box {
     display: flex;
-    column-gap: wCal(76);
+    column-gap: wCal(80);
     a {
+      padding: 8px 23px;
       font-family: union_regular;
       color: white;
-      font-size: 30px;
+      font-size: 22px;
       text-decoration: none;
       white-space: nowrap;
+      &:hover {
+        border-bottom: 1px solid white;
+      }
     }
     .router-link-active {
-      color: red;
+      border-radius: 12px;
+      border: 1px solid white;
     }
   }
 
@@ -139,7 +144,7 @@ nav {
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 700px) {
   nav {
     background-color: black;
     height: 200px;

@@ -67,7 +67,7 @@ export default {
 
 .home {
   .container {
-    margin-top: 116px;
+    margin-top: hCal(166);
     margin-left: wCal(122);
     display: flex;
     flex-direction: column;
@@ -84,19 +84,19 @@ export default {
   font-family: Roboto-Black;
   text-align: start;
   color: white;
-  font-size: 98px;
+  font-size: 82px;
 }
 
 .description {
   width: 600px;
 
   font-family: union_regular;
-  font-size: 26px;
+  font-size: 22px;
   color: white;
   text-align: start;
   overflow-wrap: break-word;
   p {
-    line-height: 41px;
+    line-height: 33px;
   }
 }
 

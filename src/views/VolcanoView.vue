@@ -8,18 +8,32 @@
           <div>Back</div>
         </div>
         <div class="session-l">
+          <div class="vType">
+            <div class="tag-box">
+              <img :src="iconTag" alt="type" class="tag">
+            </div>
+            <span style="border-bottom: 1px solid white;
+             text-transform: uppercase">
+              {{ type }}
+            </span>
+          </div>
           <div class="vName">{{ current_volcano.volcano_name }}</div>
-          <div class="vDescription">{{ description }}</div>
+          <el-scrollbar height="150">
+            <div class="vDescription">{{ description }}</div>
+          </el-scrollbar>
           <div class="location">
             <div class="map">there should be a map</div>
-            <div class="geoInfo">
-              lat: {{ current_volcano.latitude }}
-              <br/>
-              lng: {{ current_volcano.longitude }}
-            </div>
           </div>
         </div>
-        <div class="session-r">right</div>
+        <div class="session-r">
+          <div class="vPhoto"></div>
+          <div class="like">
+            <div class="like-box">
+              <img :src="iconLike" alt="like" class="like-icon" />
+            </div>
+            <div class="like-num">100</div>
+          </div>
+        </div>
       </div>
 
       <side-board class="side_board" :volcano_json="volcano_json" :type="type"
@@ -32,6 +46,8 @@
 
 <script>
 import ArrowLeft from '@/assets/Volcano/arrow-left.png';
+import IconTag from '@/assets/Volcano/icon-tag.png';
+import IconLike from '@/assets/Volcano/icon-like.png';
 import { getVolcano } from '@/api/data';
 import SideBoard from '@/components/SideBoard.vue';
 
@@ -43,14 +59,17 @@ export default {
   data() {
     return {
       arrowLeft: ArrowLeft,
+      iconTag: IconTag,
+      iconLike: IconLike,
       current_volcano: {},
       volcano_json: [],
       type: this.$route.query.type ? this.$route.query.type : 'Stratovolcano',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     };
   },
   methods: {
     goBack() {
-      this.$router.go(-1);
+      this.$router.push('/Categories');
     },
     async getVolcano(type) {
       await getVolcano(type)
@@ -100,12 +119,12 @@ export default {
 .volcano {
   .container {
     position: relative;
-    margin: 72px wCal(122);
+    margin: 76px wCal(122);
     width: calc(100vw - wCal(244));
     height: calc(100vh - 269px);
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     column-gap: 92px;
   }
 }
@@ -124,26 +143,52 @@ export default {
 }
 
 .session-l, .session-r {
-  width: 100%;
   height: 100%;
 }
 
 .session-l {
+  position: relative;
   margin-top: 79px;
+  width: wCal(704);
   color: white;
   text-align: start;
+  .vType {
+    position: absolute;
+    top: -79px;
+    right: 0;
+    display: flex;
+    column-gap: 18px;
+    font-family: Roboto-Black;
+    font-size: 32px;
+    line-height: 43px;
+    .tag-box {
+      width: 43px;
+      height: 43px;
+    }
+    .tag {
+      width: 100%;
+      height: 100%;
+    }
+  }
   .vName {
+    width: 100%;
     height: 60px;
     font-family: Roboto-Black;
     font-size: 48px;
   }
+  ::v-deep .el-scrollbar{
+    height: hCal(150);
+    min-height: 100px;
+    margin: hCal(28) 0 hCal(73) 0;
+  }
   .vDescription {
-    margin-top: 28px;
+    width: 100%;
     font-family: union_regular;
     font-size: 16px;
     line-height: 31px;
   }
   .location {
+    width: 100%;
     display: flex;
     flex-direction: column;
     margin-top: 34px;
@@ -159,12 +204,37 @@ export default {
 }
 
 .session-r {
-  background: rgb(216, 216, 216);
+  width: wCal(866);
+  .vPhoto {
+    weight: 100%;
+    height: hCal(729);
+    background-color: rgb(216, 216, 216);
+  }
+  .like {
+    margin-top: 10px;
+    display: flex;
+    column-gap: 10px;
+    .like-box {
+      width: 37px;
+      height: 37px;
+      cursor: pointer;
+      .like-icon {
+        width: 100%;
+        height: 100%;
+      }
+    }
+    .like-num {
+      font-family: union_regular;
+      font-size: 16px;
+      line-height: 37px;
+      color: white;
+    }
+  }
 }
 
 .side_board {
   position: absolute;
-  top: 286px;
-  left: 0;
+  bottom: 0;
+  left: wCal(121);
 }
 </style>

@@ -105,7 +105,7 @@ export default {
   font-size: 32px;
 }
 
-@media screen and (max-width: 1800px) {
+@media screen and (max-width: 900px) {
   .category {
     grid-template-columns: repeat(1, 1fr);
     .card {

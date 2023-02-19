@@ -85,8 +85,8 @@ export default {
     }
     .el-tabs__item {
       margin: 5px 0 ;
-      width: 160px;
-      height: 160px;
+      width: 166px;
+      height: 166px;
       background-color: rgb(151, 151, 151);
       text-align: center;
       line-height: 166px;

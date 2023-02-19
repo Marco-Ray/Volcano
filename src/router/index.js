@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import CategoriesView from '../views/CategoriesView.vue';
 import VolcanoView from '../views/VolcanoView.vue';
+import LearnMore from '../views/LearnMore.vue';
 
 const routes = [
   {
@@ -31,6 +32,15 @@ const routes = [
     component: VolcanoView,
     meta: {
       index: 2,
+      transitionName: '',
+    },
+  },
+  {
+    path: '/LearnMore',
+    name: 'LearnMore',
+    component: LearnMore,
+    meta: {
+      index: 3,
       transitionName: '',
     },
   },

@@ -50,30 +50,30 @@ export default {
 }
 
 .sideBoard {
-  width: 0;
-  height: hCal(701);
+  width: wCal(704);
+  height: 10px;
   background-color: rgb(143, 143, 143);
   transition: all .3s ease-out;
   color: white;
   .arrow-box {
     position: absolute;
-    right: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 20px;
-    height: 70px;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70px;
+    height: 20px;
     background-color: rgb(143, 143, 143);
-    border-radius: 0 4px 4px 0;
+    border-radius: 4px 4px 0 0;
   }
   .arrow {
     position: absolute;
-    top: 50%;
-    right: 4px;
-    transform: translateY(-50%);
+    top: 4px;
+    left: 50%;
+    transform: translateX(-50%);
     width: 0;
     height: 0;
     border: 10px solid rgb(219, 219, 219);
-    border-color: transparent rgb(219, 219, 219) transparent transparent;
+    border-color: transparent transparent rgb(219, 219, 219) transparent ;
     transition: all .3s ease-out;
   }
   .type {
@@ -83,21 +83,25 @@ export default {
     font-size: 48px;
   }
   .cards_grid {
+    padding: 0 wCal(60);
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     justify-items: center;
     align-items: center;
-    grid-row-gap: 26px;
+    grid-row-gap: 36px;
   }
   .brief_card {
     display: none;
     cursor: pointer;
+    height: 206px;
+    border-bottom: 1px solid white;
     .v_pic {
-      width: 318px;
-      height: 179px;
+      width: 240px;
+      height: 136px;
       background-color: rgb(219, 219, 219);
     }
     .v_name {
+      margin-top: 13px;
       font-family: union_regular;
       font-size: 16px;
       line-height: 31px;
@@ -106,9 +110,9 @@ export default {
   }
 
   &:hover {
-    width: 825px;
+    height: hCal(800);
     .arrow {
-      border-color: transparent transparent transparent rgb(219, 219, 219);
+      border-color: rgb(219, 219, 219) transparent transparent transparent;
     }
 
     .type, .brief_card {
@@ -123,6 +127,14 @@ export default {
 
 .scroll-viewer {
   margin-top: 40px;
-  height: hCal(510);
+  height: hCal(610);
+}
+
+@media screen and (max-width: 1650px) {
+  .sideBoard {
+    .cards_grid {
+      grid-template-columns: 1fr;
+    }
+  }
 }
 </style>
