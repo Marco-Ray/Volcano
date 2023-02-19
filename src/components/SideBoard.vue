@@ -6,7 +6,7 @@
     <el-scrollbar class="scroll-viewer">
       <div class="cards_grid">
         <div v-for="(v, index) in volcano_json" :key="index" class="brief_card"
-             @click="setVolcano(index)">
+             @click="debounceMethods(setVolcano, index, 2000)">
           <div class="v_pic">
             {{ index }}
           </div>
