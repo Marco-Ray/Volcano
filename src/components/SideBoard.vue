@@ -35,6 +35,11 @@ export default {
   methods: {
     setVolcano(index) {
       this.$emit('setVolcano', index);
+      this.$message({
+        message: 'Success!',
+        type: 'success',
+        center: true,
+      });
     },
   },
 };
@@ -99,6 +104,9 @@ export default {
       width: 240px;
       height: 136px;
       background-color: rgb(219, 219, 219);
+      &:active {
+        border: 5px solid black;
+      }
     }
     .v_name {
       margin-top: 13px;
