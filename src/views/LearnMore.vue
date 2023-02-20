@@ -1,3 +1,4 @@
+<!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
   <div>
     <div class="learn-more">
@@ -7,7 +8,8 @@
             <div class="item">
               <div class="item-cover">{{ i }}</div>
               <div class="item-content">
-                <div>
+                <div class="item-title" @click="goArticle">Title of the Article</div>
+                <div class="item-abstract">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                   sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                   Ut enim ad minim veniam, quis nostrud exercitation
@@ -29,6 +31,16 @@
 <script>
 export default {
   name: 'LearnMore',
+  data() {
+    return {
+
+    };
+  },
+  methods: {
+    goArticle() {
+      this.$router.push({ path: '/Article' });
+    },
+  },
 };
 </script>
 
@@ -81,6 +93,19 @@ export default {
       width: 1040px;
       .item-content {
         display: block;
+        padding: 0 30px;
+        .item-title {
+          font-family: union_bold;
+          font-size: 26px;
+          cursor: pointer;
+          &:hover {
+            border-bottom: 1px solid white;
+          }
+        }
+        .item-abstract {
+          margin-top: 50px;
+          text-align: start;
+        }
       }
     }
     &:nth-child(2n-1) {

@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import CategoriesView from '../views/CategoriesView.vue';
 import VolcanoView from '../views/VolcanoView.vue';
 import LearnMore from '../views/LearnMore.vue';
+import ArticleViews from '../views/ArticleViews.vue';
 
 const routes = [
   {
@@ -41,6 +42,15 @@ const routes = [
     component: LearnMore,
     meta: {
       index: 3,
+      transitionName: '',
+    },
+  },
+  {
+    path: '/Article',
+    name: 'Article',
+    component: ArticleViews,
+    meta: {
+      index: 4,
       transitionName: '',
     },
   },
