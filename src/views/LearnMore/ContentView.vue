@@ -27,7 +27,7 @@ export default {
   },
   methods: {
     goArticle() {
-      this.$router.push({ path: '/LearnMore/Article' });
+      this.$router.push({ path: '/Article' });
     },
   },
 };
