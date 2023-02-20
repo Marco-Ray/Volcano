@@ -19,14 +19,16 @@
           </div>
           <div class="vName">{{ current_volcano.volcano_name }}</div>
           <el-scrollbar height="150">
-            <div class="vDescription">{{ description }}</div>
+            <div class="vDescription">{{ current_volcano.Description }}</div>
           </el-scrollbar>
           <div class="location">
             <div class="map">there should be a map</div>
           </div>
         </div>
         <div class="session-r">
-          <div class="vPhoto"></div>
+          <div class="vPhoto_box">
+            <img :src="current_volcano.image" alt="volcano photo" class="vPhoto"/>
+          </div>
           <div class="like">
             <div v-if="!liked"
               class="like-box" @click="debounceMethods(likeVolcano, current_volcano.id, 2000)">
@@ -96,7 +98,7 @@ export default {
     },
     setVolcano(index) {
       this.current_volcano = this.volcano_json[index];
-      // TODO give feedback when successfully select new volcano
+      this.liked = false;
     },
     async likeVolcano(index) {
       await likeVolcano(index)
@@ -213,6 +215,7 @@ export default {
     margin: hCal(28) 0 hCal(73) 0;
   }
   .vDescription {
+    padding-bottom: 15px;
     width: 100%;
     font-family: union_regular;
     font-size: 16px;
@@ -236,10 +239,15 @@ export default {
 
 .session-r {
   width: wCal(866);
-  .vPhoto {
-    weight: 100%;
+  .vPhoto_box {
+    width: 100%;
     height: hCal(729);
-    background-color: rgb(216, 216, 216);
+    background-color: #000;
+    .vPhoto {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
   }
   .like {
     margin-top: 10px;
