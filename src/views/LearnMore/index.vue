@@ -1,29 +1,39 @@
 <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
   <div>
-    <div class="article">
+    <div class="learn-more">
       <div class="container">
-        <div class="back-box">
-          <div>
-          </div>
-          <div class="back">back</div>
-        </div>
         <el-scrollbar>
-          <div class="title">
-            Title of the Article
-          </div>
-          <div class="content"></div>
+          <router-view
+            v-slot="{ Component, route }"
+          >
+            <transition
+              :name="route.meta.transitionName"
+            >
+              <component
+                :is="Component"
+                :key="route.path"
+              />
+            </transition>
+          </router-view>
         </el-scrollbar>
       </div>
 
-      <div id="article-bg"></div>
+      <div id="learn-more-bg"></div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'ArticleViews',
+  name: 'LearnMore',
+  data() {
+    return {
+    };
+  },
+  methods: {
+
+  },
 };
 </script>
 
@@ -36,7 +46,7 @@ export default {
   @return calc(100vh / 1080 * $h);
 }
 
-#article-bg {
+#learn-more-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -46,31 +56,24 @@ export default {
   z-index: -10;
 }
 
-.article {
+.learn-more {
   .container {
-    position: relative;
     margin: 76px wCal(61);
     width: calc(100vw - wCal(122));
     height: calc(100vh - 269px);
     border-top: 1px solid white;
     overflow: hidden;
-    color: white;
-  }
-  .back-box {
-    position: absolute;
-    .back {
-      font-family: union_regular;
-      font-size: 28px;
+    ::v-deep .el-scrollbar {
+      width: 100%;
+      .el-scrollbar__wrap {
+        margin-top: 20px;
+      }
+      .el-scrollbar__view {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
     }
-  }
-
-  .title {
-    margin-top: 50px;
-    font-family: Roboto-Black;
-    font-size: 42px;
-  }
-  .content {
-    width: 100%;
   }
 }
 </style>

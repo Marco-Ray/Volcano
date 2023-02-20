@@ -2,8 +2,9 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import CategoriesView from '../views/CategoriesView.vue';
 import VolcanoView from '../views/VolcanoView.vue';
-import LearnMore from '../views/LearnMore.vue';
-import ArticleViews from '../views/ArticleViews.vue';
+import LearnMore from '../views/LearnMore/index.vue';
+import ContentView from '../views/LearnMore/ContentView.vue';
+import ArticleViews from '../views/LearnMore/ArticleViews.vue';
 
 const routes = [
   {
@@ -44,15 +45,26 @@ const routes = [
       index: 3,
       transitionName: '',
     },
-  },
-  {
-    path: '/Article',
-    name: 'Article',
-    component: ArticleViews,
-    meta: {
-      index: 4,
-      transitionName: '',
-    },
+    children: [
+      {
+        path: '',
+        name: 'Content',
+        component: ContentView,
+        meta: {
+          index: 4,
+          transitionName: '',
+        },
+      },
+      {
+        path: '/Article',
+        name: 'Article',
+        component: ArticleViews,
+        meta: {
+          index: 5,
+          transitionName: '',
+        },
+      },
+    ],
   },
   {
     path: '/:catchAll(.*)*',
