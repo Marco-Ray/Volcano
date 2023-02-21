@@ -21,8 +21,17 @@
           <el-scrollbar height="150">
             <div class="vDescription">{{ current_volcano.Description }}</div>
           </el-scrollbar>
-          <div class="location">
-            <div class="map">there should be a map</div>
+          <div class="location" v-if="LatLng.lat && LatLng.lng">
+            <l-map
+              ref="map" v-model:zoom="zoom"
+                   :center="LatLng">
+              <l-tile-layer
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                layer-type="base"
+                name="OpenStreetMap"
+              ></l-tile-layer>
+              <l-marker :lat-lng="LatLng" ></l-marker>
+            </l-map>
           </div>
         </div>
         <div class="session-r">
@@ -58,11 +67,16 @@ import IconLike from '@/assets/Volcano/icon-like.png';
 import IconLiked from '@/assets/Volcano/icon-liked.png';
 import { getVolcano, likeVolcano, dislikeVolcano } from '@/api/data';
 import SideBoard from '@/components/SideBoard.vue';
+import { LMap, LTileLayer, LMarker } from '@vue-leaflet/vue-leaflet';
+import 'leaflet/dist/leaflet.css';
 
 export default {
   name: 'VolcanoView',
   components: {
     SideBoard,
+    LMap,
+    LTileLayer,
+    LMarker,
   },
   data() {
     return {
@@ -75,6 +89,8 @@ export default {
       type: this.$route.query.type ? this.$route.query.type : 'Stratovolcano',
       liked: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+      zoom: 8,
+      LatLng: {},
     };
   },
   methods: {
@@ -88,6 +104,8 @@ export default {
             this.volcano_json = res.data;
             // eslint-disable-next-line
             this.current_volcano = res.data[0];
+            this.LatLng.lat = parseFloat(this.current_volcano.latitude);
+            this.LatLng.lng = parseFloat(this.current_volcano.longitude);
           } else {
             this.volcano_json = [];
           }
@@ -99,6 +117,9 @@ export default {
     setVolcano(index) {
       this.current_volcano = this.volcano_json[index];
       this.liked = false;
+      this.LatLng = {};
+      this.LatLng.lat = parseFloat(this.current_volcano.latitude);
+      this.LatLng.lng = parseFloat(this.current_volcano.longitude);
     },
     async likeVolcano(index) {
       await likeVolcano(index)
@@ -223,17 +244,10 @@ export default {
   }
   .location {
     width: 100%;
+    height: 339px;
     display: flex;
     flex-direction: column;
     margin-top: 34px;
-    .map {
-      width: 100%;
-      height: 339px;
-      background-color: rgb(216, 216, 216);
-    }
-    .geoInfo {
-      margin-top: 30px;
-    }
   }
 }
 
@@ -275,5 +289,10 @@ export default {
   position: absolute;
   bottom: 0;
   left: wCal(121);
+  z-index: 99;
+}
+
+.leaflet-container {
+  z-index: 90;
 }
 </style>

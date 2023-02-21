@@ -11,7 +11,11 @@
       <div class="title">
         Title of the Article
       </div>
-      <div class="content"></div>
+      <div class="content">
+        <iframe src="https://alanchen.edinburgh.domains/distribution.html"
+                :title="i" class="chart">
+        </iframe>
+      </div>
     </el-scrollbar>
   </div>
 </template>
@@ -75,8 +79,12 @@ export default {
   font-size: 42px;
 }
 .content {
+  margin-top: 100px;
   width: 100%;
-  height: 2000px;
+  .chart {
+    width: 720px;
+    height: 420px;
+  }
 }
 
 </style>

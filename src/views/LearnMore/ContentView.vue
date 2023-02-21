@@ -2,7 +2,9 @@
 <template>
   <div v-for="i in 6" :key="i" class="item-box">
             <div class="item">
-              <div class="item-cover">{{ i }}</div>
+              <div class="item-cover">
+                {{ i }}
+              </div>
               <div class="item-content">
                 <div class="item-title" @click="goArticle">Title of the Article</div>
                 <div class="item-abstract">
@@ -84,6 +86,10 @@ export default {
     width: 500px;
     height: 350px;
     background-color: rgb(216, 216, 216);
+    .chart {
+      width: 100%;
+      height: 100%;
+    }
   }
   .item-content {
     display: none;
