@@ -8,7 +8,7 @@
             v-for="(label, index) in labelOptions" :key="index"
             :label="label"
           >
-            <category-board :type="label" />
+            <category-board :type="label" :index="index" />
           </el-tab-pane>
         </el-tabs>
       </div>
