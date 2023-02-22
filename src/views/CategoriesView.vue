@@ -1,3 +1,4 @@
+<!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
   <div>
     <!-- nav-bar /-->
@@ -11,6 +12,11 @@
             <category-board :type="label" :index="index" />
           </el-tab-pane>
         </el-tabs>
+
+        <div class="viewMore" @click="goFor">
+          <div>View More</div>
+          <div><img :src="arrowRight" alt="view more"/></div>
+        </div>
       </div>
 
       <div id="categories-bg"></div>
@@ -21,6 +27,7 @@
 <script>
 // import NavBar from '@/components/NavBar.vue';
 import CategoryBoard from '@/components/CategoryBoard.vue';
+import ArrowRight from '@/assets/Categories/arrow-right.png';
 
 export default {
   name: 'CategoriesView',
@@ -30,11 +37,15 @@ export default {
   },
   data() {
     return {
+      arrowRight: ArrowRight,
       labelOptions: ['Stratovolcano', 'Shield', 'Caldera', 'Pyroclastic cone'],
       type: 'Stratovolcano',
     };
   },
   methods: {
+    goFor() {
+      this.$router.push({ path: '/Volcano', query: { type: this.type } });
+    },
   },
 };
 </script>
@@ -60,6 +71,7 @@ export default {
 
 .categories {
   .container {
+    position: relative;
     margin: 72px wCal(122);
     width: calc(100vw - wCal(244));
     height: calc(100vh - 269px);
@@ -100,5 +112,20 @@ export default {
       background-color: rgb(72, 72, 73);
     }
   }
+}
+
+.viewMore {
+  position: absolute;
+  bottom: hCal(-60);
+  right: wCal(20);
+  display: flex;
+  flex-direction: row;
+  column-gap: 10px;
+  cursor: pointer;
+  z-index: 90;
+
+  color: white;
+  font-family: union_regular;
+  font-size: 32px;
 }
 </style>
