@@ -193,6 +193,7 @@ export default {
   font-family: union_regular;
   font-size: 32px;
   color: white;
+  z-index: 90;
 }
 
 .session-l, .session-r {
@@ -225,7 +226,7 @@ export default {
   }
   .vName {
     width: 100%;
-    height: 60px;
+    //height: 60px;
     font-family: Roboto-Black;
     font-size: 48px;
   }
@@ -294,4 +295,23 @@ export default {
 .leaflet-container {
   z-index: 90;
 }
+
+@media screen and (max-width: 1400px) {
+  .session-l {
+    .vType {
+      position: unset;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+//@media screen and (max-width: 1000px) {
+//  .volcano {
+//    .container {
+//      flex-direction: column;
+//      justify-content: center;
+//      align-items: center;
+//    }
+//  }
+//}
 </style>
