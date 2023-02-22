@@ -7,13 +7,16 @@
       </div>
       <div class="back">Back</div>
     </div>
-    <el-scrollbar>
+    <el-scrollbar v-if="selectedGraph">
       <div class="title">
-        Title of the Article
+        {{ selectedGraph.title }}
       </div>
       <div class="content">
-        <iframe src="https://alanchen.edinburgh.domains/distribution.html"
-                :title="i" class="chart">
+        <div class="g_content">
+          {{ selectedGraph.content }}
+        </div>
+        <iframe :src="selectedGraph.graph"
+                :title="index" class="chart">
         </iframe>
       </div>
     </el-scrollbar>
@@ -25,14 +28,26 @@ import IconBack from '@/assets/LearnMore/icon-back.png';
 
 export default {
   name: 'ArticleViews',
+  props: {
+    graphsList: Array,
+  },
   data() {
     return {
       iconBack: IconBack,
+      index: this.$route.query.index,
     };
   },
   methods: {
     goBack() {
       this.$router.go(-1);
+    },
+  },
+  computed: {
+    selectedGraph() {
+      if (this.graphsList) {
+        return this.graphsList[this.index];
+      }
+      return {};
     },
   },
 };
@@ -79,11 +94,18 @@ export default {
   font-size: 42px;
 }
 .content {
-  margin-top: 100px;
+  margin: 60px 100px 0 100px;
   width: 100%;
+  .g_content {
+    font-family: union_regular;
+    width: 100%;
+    font-size: 16px;
+    text-align: start;
+  }
   .chart {
-    width: 720px;
-    height: 420px;
+    margin-top: 20px;
+    min-width: 720px;
+    min-height: 420px;
   }
 }
 

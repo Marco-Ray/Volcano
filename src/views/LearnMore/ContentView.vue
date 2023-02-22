@@ -1,19 +1,14 @@
 <!-- eslint-disable vuejs-accessibility/click-events-have-key-events -->
 <template>
-  <div v-for="i in 6" :key="i" class="item-box">
+  <div v-for="(graph, index) in graphsList" :key="index" class="item-box">
             <div class="item">
               <div class="item-cover">
-                {{ i }}
+                <img :src="graph.image" alt="cover" class="graph_cover" />
               </div>
               <div class="item-content">
-                <div class="item-title" @click="goArticle">Title of the Article</div>
+                <div class="item-title" @click="goArticle(index)">{{ graph.title }}</div>
                 <div class="item-abstract">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur.
+                  {{ graph.content }}
                 </div>
               </div>
             </div>
@@ -23,13 +18,18 @@
 <script>
 export default {
   name: 'MenuView',
+  props: {
+    graphsList: Array,
+  },
+  emits: ['setIndex'],
   data() {
     return {
     };
   },
   methods: {
-    goArticle() {
-      this.$router.push({ path: '/Article' });
+    goArticle(index) {
+      // this.$emit('setIndex', index);
+      this.$router.push({ path: '/Article', query: { index } });
     },
   },
 };
@@ -85,10 +85,11 @@ export default {
   .item-cover {
     width: 500px;
     height: 350px;
-    background-color: rgb(216, 216, 216);
-    .chart {
+    background-color: rgb(0, 0, 0);
+    .graph_cover {
       width: 100%;
       height: 100%;
+      object-fit: contain;
     }
   }
   .item-content {

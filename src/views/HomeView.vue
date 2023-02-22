@@ -21,37 +21,27 @@
           </div>
         </div>
         <div id="btt-start" @click="start">START</div>
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-// import { getJson } from '@/api/data';
-
 export default {
   name: 'HomeView',
   components: {
   },
   data() {
     return {
-      // message: '',
     };
   },
   methods: {
-    // apiTest() {
-    //   getJson().then((res) => {
-    //     // console.log(res.data);
-    //     this.message = res.data.message;
-    //   });
-    // },
     start() {
       this.$router.push('/Categories');
     },
   },
   created() {
-    // this.apiTest();
   },
 };
 </script>

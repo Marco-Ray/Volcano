@@ -5,6 +5,7 @@
     <div id="Logo">
       <img :src="logo" alt="Logo" id="logo-img" @click="goFor"/>
     </div>
+
 <!--    router-->
     <div id="menu">
       <!-- div id="trigger" @click="routersTrigger">
@@ -18,6 +19,10 @@
         </router-link>
         <router-link to="/LearnMore">Learn More</router-link>
       </div>
+    </div>
+<!--    report -->
+    <div id="report_link">
+      <a id="report_a" href="https://alanchen.edinburgh.domains/0223report.pdf" target="_blank">Report Alpha</a>
     </div>
 <!--    search-->
     <!-- div id="search">
@@ -85,6 +90,19 @@ nav {
       min-width: 59px;
       min-height: 60px;
       cursor: pointer;
+    }
+  }
+
+  #report_link {
+    //width: 100%;
+    font-size: 22px;
+    color: white;
+    white-space: nowrap;
+    #report_a {
+      color: white;
+      &:hover {
+        color: red;
+      }
     }
   }
 

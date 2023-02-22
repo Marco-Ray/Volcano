@@ -13,6 +13,7 @@
               <component
                 :is="Component"
                 :key="route.path"
+                :graphsList="graphsList"
               />
             </transition>
           </router-view>
@@ -25,14 +26,37 @@
 </template>
 
 <script>
+import { getGraphs } from '@/api/data';
+
 export default {
   name: 'LearnMore',
   data() {
     return {
+      graphsList: [],
+      selectedGraph: {},
     };
   },
   methods: {
-
+    async getGraphs() {
+      await getGraphs()
+        .then((res) => {
+          this.graphsList = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+          this.$message({
+            message: 'Oops, something goes wrong',
+            type: 'error',
+            center: true,
+          });
+        });
+    },
+    selectGraph(index) {
+      this.selectedGraph = this.graphsList[index];
+    },
+  },
+  created() {
+    this.getGraphs();
   },
 };
 </script>
@@ -60,7 +84,7 @@ export default {
   .container {
     margin: 76px wCal(61);
     width: calc(100vw - wCal(122));
-    height: calc(100vh - 269px);
+    height: calc(100vh - 200px);
     border-top: 1px solid white;
     overflow: hidden;
     ::v-deep .el-scrollbar {

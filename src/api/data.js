@@ -23,3 +23,11 @@ export function dislikeVolcano(path) {
     urlType: 'api',
   });
 }
+
+export function getGraphs() {
+  return axios({
+    url: '/api/volcano/learnmore',
+    method: 'get',
+    urlType: 'api',
+  });
+}
