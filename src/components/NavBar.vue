@@ -147,7 +147,7 @@ nav {
 @media screen and (max-width: 700px) {
   nav {
     background-color: black;
-    height: 200px;
+    height: 160px;
     min-height: 100px;
     #menu {
       #trigger {
@@ -162,6 +162,9 @@ nav {
       #router-box {
         //position: absolute;
         flex-direction: column;
+        a {
+          padding: 4px 23px;
+        }
       }
     }
   }
