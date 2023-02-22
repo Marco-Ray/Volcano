@@ -124,7 +124,6 @@ export default {
     async likeVolcano(index) {
       await likeVolcano(index)
         .then((res) => {
-          console.log(res.data);
           // eslint-disable-next-line
           this.current_volcano['likes'] = res.data.likes;
           this.liked = true;

@@ -7,8 +7,8 @@
       <div class="cards_grid">
         <div v-for="(v, index) in volcano_json" :key="index" class="brief_card"
              @click="debounceMethods(setVolcano, index, 2000)">
-          <div class="v_pic">
-            {{ index }}
+          <div class="v_pic-box">
+            <img :src="v.image" alt="volcano image" class="v_pic"/>
           </div>
           <div class="v_name">{{ v.volcano_name }}</div>
         </div>
@@ -100,12 +100,17 @@ export default {
     cursor: pointer;
     height: 206px;
     border-bottom: 1px solid white;
-    .v_pic {
+    .v_pic-box {
       width: 240px;
       height: 136px;
-      background-color: rgb(219, 219, 219);
+      background-color: rgb(0, 0, 0);
       &:active {
         border: 5px solid black;
+      }
+      .v_pic {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
       }
     }
     .v_name {
