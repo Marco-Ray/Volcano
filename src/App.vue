@@ -52,7 +52,7 @@ body {
 }
 
 .viewer {
-  padding-top: 116px;
+  padding-top: 96px;
 }
 
 // slide-right

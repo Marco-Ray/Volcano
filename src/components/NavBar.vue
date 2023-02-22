@@ -70,7 +70,7 @@ nav {
   top: 0;
   left: 0;
   padding: 0 wCal(122);
-  height: 180px;
+  height: 160px;
   width: calc(100vw - wCal(244));
   display: flex;
   justify-content: space-between;
