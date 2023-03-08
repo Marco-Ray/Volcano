@@ -2,6 +2,7 @@ import axios from 'axios';
 
 export function getVolcano(path) {
   return axios({
+    // url: `/fatfree/Volcano-Back/volcano/${path}`,
     url: `/api/volcano/${path}`,
     method: 'get',
     urlType: 'api',
@@ -10,6 +11,7 @@ export function getVolcano(path) {
 
 export function likeVolcano(path) {
   return axios({
+    // url: `/fatfree/Volcano-Back/volcano/like/${path}`,
     url: `/api/volcano/like/${path}`,
     method: 'put',
     urlType: 'api',

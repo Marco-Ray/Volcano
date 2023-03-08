@@ -9,7 +9,7 @@ export default {
     debounceMethods(func,...args){
       let context = this;
       if (this.debounceTimer) clearTimeout(this.debounceTimer);
-      let callNow = !this.debounceTimer;    //是否立即执行
+      let callNow = !this.debounceTimer;
       this.debounceTimer = setTimeout(() => {
         this.debounceTimer = null;
       },1000)
