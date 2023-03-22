@@ -20,6 +20,7 @@ export function likeVolcano(path) {
 
 export function dislikeVolcano(path) {
   return axios({
+    // url: `/fatfree/Volcano-Back/volcano/dislike/${path}`,
     url: `/api/volcano/dislike/${path}`,
     method: 'put',
     urlType: 'api',
@@ -28,6 +29,7 @@ export function dislikeVolcano(path) {
 
 export function getGraphs() {
   return axios({
+    // url: '/fatfree/Volcano-Back/volcano/learnmore',
     url: '/api/volcano/learnmore',
     method: 'get',
     urlType: 'api',

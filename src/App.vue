@@ -34,7 +34,7 @@ html, body {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  overflow-x: hidden;
+  //overflow-x: hidden;
   overflow-y: hidden;
 }
 

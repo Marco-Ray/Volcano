@@ -74,9 +74,10 @@ nav {
   position: absolute;
   top: 0;
   left: 0;
-  padding: 0 wCal(122);
+  //padding: 0 wCal(122);
   height: 160px;
-  width: calc(100vw - wCal(244));
+  //width: calc(100vw - wCal(244));
+  width: 100vw;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -84,6 +85,7 @@ nav {
   #Logo {
     width: 59px;
     height: 60px;
+    padding-left: wCal(122);
     #logo-img {
       width: 100%;
       height: 100%;
@@ -94,6 +96,7 @@ nav {
   }
 
   #report_link {
+    padding-right: wCal(122);
     //width: 100%;
     font-size: 22px;
     color: white;
@@ -166,6 +169,7 @@ nav {
   nav {
     background-color: black;
     height: 160px;
+    width: 100%;
     min-height: 100px;
     #menu {
       #trigger {

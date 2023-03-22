@@ -31,6 +31,7 @@
           :autoplay="true"
           :muted="true"
           :fluid="true"
+          :fullscreen="true"
           @error="closeVideo"
         />
       </div>
@@ -78,7 +79,7 @@ export default {
 
 .home {
   width: 100vw;
-  height: calc(100vh - 160px);
+  //height: calc(100vh - 160px);
   .container {
     margin-top: hCal(166);
     margin-left: wCal(122);
