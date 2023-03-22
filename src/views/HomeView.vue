@@ -25,6 +25,7 @@
 <!-- video -->
         <video-player v-if="isShowVideo"
           src="bg-video.mp4"
+          poster="bg-video-poster.png"
           :loop="true"
           :volume="0.6"
           :autoplay="true"
@@ -38,8 +39,9 @@
 </template>
 
 <script>
-import { VideoPlayer } from '@videojs-player/vue'
-import 'video.js/dist/video-js.css'
+import { VideoPlayer } from '@videojs-player/vue';
+import 'video.js/dist/video-js.css';
+import IconVideo from '@/assets/Welcome/icon-video.png';
 
 export default {
   name: 'HomeView',
@@ -49,6 +51,7 @@ export default {
   data() {
     return {
       isShowVideo: true,
+      IconVideo: IconVideo,
     };
   },
   methods: {
@@ -56,7 +59,6 @@ export default {
       this.$router.push('/Categories');
     },
     closeVideo() {
-      console.log('1111');
       this.isShowVideo = false;
     },
   },
@@ -75,6 +77,8 @@ export default {
 }
 
 .home {
+  width: 100vw;
+  height: calc(100vh - 160px);
   .container {
     margin-top: hCal(166);
     margin-left: wCal(122);
