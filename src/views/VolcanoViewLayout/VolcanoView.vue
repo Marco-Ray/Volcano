@@ -86,7 +86,7 @@ export default {
       iconLiked: IconLiked,
       current_volcano: {},
       volcano_json: [],
-      type: this.$route.query.type ? this.$route.query.type : 'Stratovolcano',
+      type: this.$route.params.type,
       liked: false,
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       zoom: 8,
@@ -146,6 +146,15 @@ export default {
   },
   created() {
     this.getVolcano(this.type);
+  },
+  watch: {
+    // 监听路由是否变化
+    '$route' (to, from) {
+      if(to.query.type != from.query.type){
+        this.type = to.query.type; // 把最新id赋值给定义在data中的id
+        this.$router.go(0); // 重新调用加载数据方法
+      }
+    }
   },
 };
 </script>

@@ -11,14 +11,26 @@
       <!-- div id="trigger" @click="routersTrigger">
         <img :src="iconBars" alt="" class="svg"/>
       </div -->
-      <div id="router-box" v-show="isShow">
+      <!-- div id="router-box" v-show="isShow">
         <router-link to="/">Home</router-link>
         <router-link to="/Categories">Categories</router-link>
         <router-link :to="{ path: '/Volcano', query: { type: 'Stratovolcano' }}">
           Volcano
         </router-link>
         <router-link to="/LearnMore">Learn More</router-link>
-      </div>
+      </div -->
+      <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" router>
+        <el-menu-item index="/" >Home</el-menu-item>
+        <el-menu-item index="/Statistics">Statistics</el-menu-item>
+        <el-sub-menu>
+          <template #title>Volcanoes</template>
+          <el-menu-item index="3-1" :route="{ path: '/Volcano/Stratovolcano' }">Stratovolcano</el-menu-item>
+          <el-menu-item index="3-2" :route="{ path: '/Volcano/Shield' }">Shield</el-menu-item>
+          <el-menu-item index="3-3" :route="{ path: '/Volcano/Caldera' }">Caldera</el-menu-item>
+          <el-menu-item index="3-4" :route="{ path: '/Volcano/Pyroclastic+cone' }">Pyroclastic cone</el-menu-item>
+        </el-sub-menu>
+        <el-menu-item index="/LearnMore">Learn More</el-menu-item>
+      </el-menu>
     </div>
 <!--    report -->
     <div id="report_link">
@@ -109,12 +121,12 @@ nav {
     }
   }
 
-  #menu {
-    position: relative;
-    #trigger {
-      display: none;
-    }
-  }
+  //#menu {
+  //  position: relative;
+  //  #trigger {
+  //    display: none;
+  //  }
+  //}
   #router-box {
     display: flex;
     column-gap: wCal(80);
@@ -135,33 +147,8 @@ nav {
     }
   }
 
-  #search {
-    display: flex;
-    flex-direction: row;
-    align-items: end;
-    margin-left: 20px;
-    .icon-container {
-      display: flex;
-      align-items: end;
-      width: 36px;
-      height: 36px;
-      margin-right: 26px;
-      .icon {
-        width: 100%;
-        height: 100%;
-      }
-    }
-    .el-input {
-      --el-input-text-color: white;
-      --el-font-size-base: 20px;
-      //--el-input-border: 3px solid white;
-      width: wCal(416);
-      height: 36px;
-    }
-    ::v-deep .el-input__wrapper {
-      border-radius: 12px;
-      background-color: transparent;
-    }
+  .el-menu-demo {
+    width: 500px;
   }
 }
 
