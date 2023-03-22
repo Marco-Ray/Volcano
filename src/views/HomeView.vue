@@ -22,23 +22,42 @@
         </div>
         <div id="btt-start" @click="start">START</div>
 
+<!-- video -->
+        <video-player v-if="isShowVideo"
+          src="bg-video.mp4"
+          :loop="true"
+          :volume="0.6"
+          :autoplay="true"
+          :muted="true"
+          :fluid="true"
+          @error="closeVideo"
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { VideoPlayer } from '@videojs-player/vue'
+import 'video.js/dist/video-js.css'
+
 export default {
   name: 'HomeView',
   components: {
+    VideoPlayer,
   },
   data() {
     return {
+      isShowVideo: true,
     };
   },
   methods: {
     start() {
       this.$router.push('/Categories');
+    },
+    closeVideo() {
+      console.log('1111');
+      this.isShowVideo = false;
     },
   },
   created() {
@@ -109,5 +128,14 @@ export default {
     color: red;
     border-color: red;
   }
+}
+
+.video-js {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
 }
 </style>

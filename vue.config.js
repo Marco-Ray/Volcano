@@ -15,4 +15,5 @@ module.exports = {
     ? '/Volcano-Front/my-app/'
     : '/',
   outputDir: 'my-app',
+  lintOnSave: false,
 }
