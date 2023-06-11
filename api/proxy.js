@@ -6,7 +6,7 @@ module.exports = (req, res) => {
 
   // target server
   if (req.url.startsWith('/api')) {
-    target = 'https://zehuan-wang.edinburgh.domains/fatfree/Volcano-Back/'
+    target = ''
   }
   createProxyMiddleware({
     target,
